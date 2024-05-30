@@ -6,9 +6,9 @@ using UnityEngine;
 public class Counter : MonoBehaviour
 {
     public event Action Changed;
-    public float _currentTicks = 0;
+    public float CurrentTicks = 0;
     private float _timeBetweenTicks = 0.5f;
-    private bool isPaused = false;
+    private bool _isPaused = false;
 
     private void OnMouseDown()
     {
@@ -17,9 +17,9 @@ public class Counter : MonoBehaviour
 
     private void ChangeActiveStatus()
     {
-        isPaused = !isPaused;
+        _isPaused = !_isPaused;
 
-        if (isPaused == false)
+        if (_isPaused == false)
         {
             StartCoroutine(ChangeTime());
         }
@@ -27,10 +27,10 @@ public class Counter : MonoBehaviour
 
     private IEnumerator ChangeTime()
     {
-        while (isPaused == false)
+        while (_isPaused == false)
         {
             yield return new WaitForSeconds(_timeBetweenTicks);
-            _currentTicks++;
+            CurrentTicks++;
             Changed?.Invoke();
         }
     }

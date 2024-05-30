@@ -17,6 +17,6 @@ public class CounterView : MonoBehaviour
 
     private void ShowCount()
     {
-        Debug.Log(_counter._currentTicks);
+        Debug.Log(_counter.CurrentTicks);
     }
 }
